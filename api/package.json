@@ -1,0 +1,22 @@
+{
+  "name": "ryancp-tutorial-nginx-reverse-proxy-api",
+  "version": "0.0.1",
+  "description": "Example Apollo GraphQL api server for tutorial",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "graphql",
+    "api",
+    "docker",
+    "apollo-server"
+  ],
+  "author": "Ryan Pharis",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.0.0-beta.2",
+    "graphql": "^0.13.2"
+  }
+}

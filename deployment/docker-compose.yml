@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  nodejs:
+    build: ./base-images/nodejs
+  api:
+    image: tutorial_nginx_reverse_proxy_nodejs
+    volumes:
+      - ../api:/src
+    working_dir: /src
+    environment:
+      - PORT=3002
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
+  app:
+    image: tutorial_nginx_reverse_proxy_nodejs
+    volumes:
+      - ../app:/src
+    working_dir: /src
+    environment:
+      - PORT=3001
+      - HOST=app
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
+  gateway:
+    build: ../gateway
+    volumes:
+      - ../gateway:/src
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+      - app
